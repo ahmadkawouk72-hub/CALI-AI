@@ -1,15 +1,12 @@
-import type { FC } from 'react'
-import React from 'react'
-
-import type { IMainProps } from '@/app/components'
-import Main from '@/app/components'
-
-const App: FC<IMainProps> = ({
-  params,
-}: any) => {
+export default function Home() {
   return (
-    <Main params={params} />
+    <main style={{ margin: 0, height: '100dvh', background: '#080f1e' }}>
+      <iframe
+        src="https://dify.app/chat/KayzquSIOehV9P61"
+        title="CALI AI"
+        style={{ width: '100%', height: '100%', border: 0 }}
+        allow="microphone"
+      />
+    </main>
   )
 }
-
-export default React.memo(App)
