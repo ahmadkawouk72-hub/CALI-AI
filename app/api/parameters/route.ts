@@ -11,6 +11,10 @@ export async function GET(request: NextRequest) {
     })
   }
   catch (error) {
-    return NextResponse.json([])
-  }
+  console.error('CALI AI parameters error:', error)
+
+  return NextResponse.json(
+    { error: 'Failed to load parameters. Check Vercel logs.' },
+    { status: 500 }
+  )
 }
