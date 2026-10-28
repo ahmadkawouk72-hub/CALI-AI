@@ -1,16 +1,29 @@
- import { NextRequest, NextResponse } from "next/server"
+import { NextRequest, NextResponse } from "next/server";
+import { createClient } from "@supabase/supabase-js";
 
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json()
-    const apiKey = process.env.DIFY_API_KEY
+    const { message, userId, conversationId } = await request.json();
 
-    if (!apiKey) {
+    if (!message || !userId) {
       return NextResponse.json(
-        { error: "API key is not configured" },
-        { status: 500 }
-      )
+        { error: "Message and userId are required" },
+        { status: 400 }
+      );
     }
+
+    const apiKey = process.env.API_APP_KEY;
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+    if (!apiKey || !supabaseUrl || !supabaseKey) {
+      return NextResponse.json(
+        { error: "Server configuration is missing" },
+        { status: 500 }
+      );
+    }
+
+    const supabase = createClient(supabaseUrl, supabaseKey);
 
     const response = await fetch(
       "https://api.dify.ai/v1/chat-messages",
@@ -21,28 +34,48 @@ export async function POST(request: NextRequest) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          inputs: body.inputs || {},
-          query: body.query,
-          response_mode: body.response_mode || "streaming",
-          conversation_id: body.conversation_id || "",
-          user: body.user || "cali-ai-demo",
-          files: body.files || [],
+          inputs: {},
+          query: message,
+          response_mode: "blocking",
+          conversation_id: conversationId || "",
+          user: userId,
         }),
       }
-    )
+    );
 
-    return new Response(response.body, {
-      status: response.status,
-      headers: {
-        "Content-Type":
-          response.headers.get("Content-Type") ||
-          "application/json",
-      },
-    })
-  } catch {
+    const data = await response.json();
+
+    if (!response.ok) {
+      return NextResponse.json(
+        { error: "Dify request failed", details: data },
+        { status: response.status }
+      );
+    }
+
+    const { error: saveError } = await supabase
+      .from("chat_messages")
+      .insert({
+        user_id: userId,
+        message,
+        response: data.answer,
+        conversation_id: data.conversation_id,
+      });
+
+    if (saveError) {
+      console.error("Supabase save failed:", saveError.message);
+    }
+
+    return NextResponse.json({
+      answer: data.answer,
+      conversationId: data.conversation_id,
+      saved: !saveError,
+    });
+  } catch (error) {
+    console.error(error);
+
     return NextResponse.json(
-      { error: "Something went wrong" },
+      { error: "Internal server error" },
       { status: 500 }
-    )
+    );
   }
 }
