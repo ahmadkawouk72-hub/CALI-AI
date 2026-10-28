@@ -10,21 +10,51 @@ export const getLocaleOnServer = async (): Promise<Locale> => {
   // @ts-expect-error locales are readonly
   const locales: string[] = i18n.locales
 
-  let languages: string[] | undefined
-  // get locale from cookie
-  const localeCookie = (await cookies()).get('locale')
-  languages = localeCookie?.value ? [localeCookie.value] : []
+  let languages: string[] = []
 
-  if (!languages.length) {
-    // Negotiator expects plain object so we need to transform headers
-    const negotiatorHeaders: Record<string, string> = {}
-    const headersList = await headers()
-    headersList.forEach((value, key) => (negotiatorHeaders[key] = value))
-    // Use negotiator and intl-localematcher to get best locale
-    languages = new Negotiator({ headers: negotiatorHeaders }).languages()
+  // Get locale from cookie
+  const localeCookie = (await cookies()).get('locale')
+
+  if (localeCookie?.value) {
+    languages = [localeCookie.value]
   }
 
-  // match locale
-  const matchedLocale = match(languages, locales, i18n.defaultLocale) as Locale
-  return matchedLocale
+  // Get languages from browser headers
+  if (!languages.length) {
+    const negotiatorHeaders: Record<string, string> = {}
+    const headersList = await headers()
+
+    headersList.forEach((value, key) => {
+      negotiatorHeaders[key] = value
+    })
+
+    languages = new Negotiator({
+      headers: negotiatorHeaders,
+    }).languages()
+  }
+
+  // Remove invalid locale values
+  const validLanguages = languages.filter((language) => {
+    try {
+      Intl.getCanonicalLocales(language)
+      return true
+    }
+    catch {
+      return false
+    }
+  })
+
+  // Match supported locale safely
+  try {
+    const matchedLocale = match(
+      validLanguages,
+      locales,
+      i18n.defaultLocale,
+    ) as Locale
+
+    return matchedLocale
+  }
+  catch {
+    return i18n.defaultLocale as Locale
+  }
 }
