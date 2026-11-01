@@ -6,6 +6,7 @@ import { supabase } from '../supabase'
 
 export default function Home() {
   const [user, setUser] = useState<User | null>(null)
+  const [activePage, setActivePage] = useState<'home' | 'ai' | 'library'>('home')
   const [loading, setLoading] = useState(true)
   const [busy, setBusy] = useState(false)
   const [signup, setSignup] = useState(false)
@@ -105,12 +106,71 @@ export default function Home() {
     )
   }
 
+  if (user && !recovering && activePage === 'home') {
+  return (
+    <main style={{
+      minHeight: '100dvh',
+      background: '#030d18',
+      color: 'white',
+      fontFamily: 'Arial, sans-serif',
+      padding: '40px 20px',
+      textAlign: 'center'
+    }}>
+      <h1>CALI AI</h1>
+      <h2>Choose Your Experience</h2>
+
+      <div style={{
+        display: 'flex',
+        justifyContent: 'center',
+        gap: 20,
+        flexWrap: 'wrap',
+        marginTop: 40
+      }}>
+        <button
+          onClick={() => setActivePage('ai')}
+          style={{
+            padding: 30,
+            background: '#087ef4',
+            color: 'white',
+            border: 0,
+            borderRadius: 15,
+            cursor: 'pointer',
+            fontSize: 20
+          }}
+        >
+          AI Coach
+        </button>
+
+        <button
+          onClick={() => setActivePage('library')}
+          style={{
+            padding: 30,
+            background: '#123453',
+            color: 'white',
+            border: 0,
+            borderRadius: 15,
+            cursor: 'pointer',
+            fontSize: 20
+          }}
+        >
+          Exercise Library
+        </button>
+      </div>
+    </main>
+  )
+}
   // The authenticated Dify chat is deliberately the same working iframe.
-  if (user && !recovering) {
+if (user && !recovering && activePage === 'ai') {
     return (
       <main style={{ margin: 0, height: '100dvh' }}>
         <header style={{ padding: '9px 16px', background: '#080f1e', color: 'white', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12 }}>
           <strong>CALI AI 💪</strong>
+          <button
+  onClick={() => setActivePage('home')}
+  style={{ padding: '8px 14px', cursor: 'pointer' }}
+>
+  ← Back
+</button>
           <button onClick={logout} style={{ padding: '8px 14px', cursor: 'pointer' }}>Log Out</button>
         </header>
         <iframe
@@ -122,7 +182,27 @@ export default function Home() {
       </main>
     )
   }
+if (user && !recovering && activePage === 'library') {
+  return (
+    <main style={{
+      minHeight: '100dvh',
+      background: '#030d18',
+      color: 'white',
+      padding: 24,
+      fontFamily: 'Arial, sans-serif'
+    }}>
+      <button
+        onClick={() => setActivePage('home')}
+        style={{ padding: 12, cursor: 'pointer' }}
+      >
+        ← Back
+      </button>
 
+      <h1>Exercise Library</h1>
+      <p>Your exercise videos will appear here.</p>
+    </main>
+  )
+}
   return (
     <main className="cali-login-page" lang="en" dir="ltr">
       <div className="cali-login-card">
