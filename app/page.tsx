@@ -219,23 +219,25 @@ export default function Home() {
               }}
             >
               <div style={{
-                height: 175,
-                borderRadius: 17,
-                display: 'grid',
-                placeItems: 'center',
-                background: 'radial-gradient(circle,#147edb77,#081b36 70%)',
-                border: '1px solid #267db855',
-                marginBottom: 23
-              }}>
-                <svg width="125" height="125" viewBox="0 0 100 100" fill="none" aria-hidden="true">
-                  <circle cx="50" cy="50" r="41" stroke="#0b92ff" strokeWidth="1.5" strokeDasharray="4 6"/>
-                  <path d="M49 25C37 12 19 22 22 37C12 44 17 59 28 63C24 78 43 84 49 72V25Z" stroke="#64eaff" strokeWidth="3"/>
-                  <path d="M51 25C63 12 81 22 78 37C88 44 83 59 72 63C76 78 57 84 51 72V25Z" stroke="#2b96ff" strokeWidth="3"/>
-                  <path d="M49 29V71M27 40L39 47L49 40M73 40L61 47L51 40M28 60L39 56M72 60L61 56" stroke="#8beeff" strokeWidth="2"/>
-                  <circle cx="27" cy="40" r="3" fill="#8beeff"/>
-                  <circle cx="73" cy="40" r="3" fill="#278cff"/>
-                </svg>
-              </div>
+  height: 175,
+  borderRadius: 17,
+  overflow: 'hidden',
+  marginBottom: 23,
+  border: '1px solid #267db855',
+  background: '#081b36'
+}}>
+  <img
+    src="/ai-coach.png"
+    alt="CALI AI Coach"
+    style={{
+      width: '100%',
+      height: '100%',
+      objectFit: 'cover',
+      objectPosition: 'center 30%',
+      display: 'block'
+    }}
+  />
+</div>
               <div style={{ color: '#49d7ff', fontSize: 11, fontWeight: 800, letterSpacing: 2, marginBottom: 10 }}>
                 SMART TRAINING
               </div>
@@ -269,24 +271,26 @@ export default function Home() {
                 boxShadow: '0 15px 50px #0007, 0 0 30px #078dff22'
               }}
             >
-              <div style={{
-                height: 175,
-                borderRadius: 17,
-                display: 'grid',
-                placeItems: 'center',
-                background: 'radial-gradient(circle,#0b71c477,#081b36 70%)',
-                border: '1px solid #267db855',
-                marginBottom: 23
-              }}>
-                <svg width="135" height="135" viewBox="0 0 120 120" fill="none" aria-hidden="true">
-                  <path d="M13 22H107" stroke="#4ad8ff" strokeWidth="6" strokeLinecap="round"/>
-                  <path d="M22 22V106M98 22V106" stroke="#2b82ce" strokeWidth="5" strokeLinecap="round"/>
-                  <circle cx="60" cy="39" r="10" fill="#69dfff"/>
-                  <path d="M60 51L60 78M60 56L35 42L28 25M60 56L85 42L92 25M60 77L44 99M60 77L76 99"
-                    stroke="#69dfff" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round"/>
-                  <circle cx="60" cy="67" r="45" stroke="#1679db" strokeWidth="1.5" strokeDasharray="4 6"/>
-                </svg>
-              </div>
+             <div style={{
+  height: 175,
+  borderRadius: 17,
+  overflow: 'hidden',
+  marginBottom: 23,
+  border: '1px solid #267db855',
+  background: '#081b36'
+}}>
+  <img
+    src="/exercise-library.png"
+    alt="CALI AI Exercise Library"
+    style={{
+      width: '100%',
+      height: '100%',
+      objectFit: 'cover',
+      objectPosition: 'center 30%',
+      display: 'block'
+    }}
+  />
+</div>
               <div style={{ color: '#49d7ff', fontSize: 11, fontWeight: 800, letterSpacing: 2, marginBottom: 10 }}>
                 EXERCISE GUIDES
               </div>
