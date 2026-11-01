@@ -106,59 +106,226 @@ export default function Home() {
     )
   }
 
-  if (user && !recovering && activePage === 'home') {
-  return (
-    <main style={{
-      minHeight: '100dvh',
-      background: '#030d18',
-      color: 'white',
-      fontFamily: 'Arial, sans-serif',
-      padding: '40px 20px',
-      textAlign: 'center'
-    }}>
-      <h1>CALI AI</h1>
-      <h2>Choose Your Experience</h2>
-
-      <div style={{
-        display: 'flex',
-        justifyContent: 'center',
-        gap: 20,
-        flexWrap: 'wrap',
-        marginTop: 40
+ if (user && !recovering && activePage === 'home') {
+    return (
+      <main style={{
+        minHeight: '100dvh',
+        background: 'radial-gradient(ellipse at 50% 12%, #103b70 0%, #07182f 42%, #020813 100%)',
+        color: 'white',
+        fontFamily: 'Arial, Helvetica, sans-serif',
+        padding: '35px 18px 65px',
+        textAlign: 'center',
+        overflowX: 'hidden'
       }}>
-        <button
-          onClick={() => setActivePage('ai')}
-          style={{
-            padding: 30,
-            background: '#087ef4',
-            color: 'white',
-            border: 0,
-            borderRadius: 15,
-            cursor: 'pointer',
-            fontSize: 20
-          }}
-        >
-          AI Coach
-        </button>
+        <div style={{ maxWidth: 1050, margin: '0 auto' }}>
+          <div style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: 10,
+            padding: '9px 18px',
+            border: '1px solid #258bd777',
+            borderRadius: 30,
+            background: '#0b2746',
+            color: '#7edcff',
+            fontSize: 12,
+            fontWeight: 800,
+            letterSpacing: 2
+          }}>
+            <span style={{ color: '#29e5ff' }}>●</span>
+            YOUR TRAINING HUB
+          </div>
 
-        <button
-          onClick={() => setActivePage('library')}
-          style={{
-            padding: 30,
-            background: '#123453',
-            color: 'white',
-            border: 0,
-            borderRadius: 15,
-            cursor: 'pointer',
-            fontSize: 20
-          }}
-        >
-          Exercise Library
-        </button>
-      </div>
-    </main>
-  )
-}
+          <div style={{
+            margin: '28px auto 15px',
+            width: 118,
+            height: 118,
+            borderRadius: 30,
+            display: 'grid',
+            placeItems: 'center',
+            background: 'linear-gradient(145deg,#163f76,#06152b)',
+            border: '1px solid #28bfff88',
+            boxShadow: '0 0 65px #009dff55, inset 0 0 35px #087be533'
+          }}>
+            <svg width="88" height="88" viewBox="0 0 100 100" fill="none" aria-label="AI sports brain">
+              <path d="M49 24C39 10 18 19 21 36C9 42 14 61 26 64C23 80 43 87 49 73V24Z"
+                stroke="#55dcff" strokeWidth="3.5" strokeLinejoin="round"/>
+              <path d="M51 24C61 10 82 19 79 36C91 42 86 61 74 64C77 80 57 87 51 73V24Z"
+                stroke="#238bff" strokeWidth="3.5" strokeLinejoin="round"/>
+              <path d="M49 24V74M29 38L39 45L49 39M23 57L36 55L42 65M71 38L61 45L51 39M77 57L64 55L58 65"
+                stroke="#72e8ff" strokeWidth="2.5" strokeLinecap="round"/>
+              <circle cx="29" cy="38" r="3.5" fill="#6aeaff"/>
+              <circle cx="23" cy="57" r="3.5" fill="#6aeaff"/>
+              <circle cx="71" cy="38" r="3.5" fill="#168dff"/>
+              <circle cx="77" cy="57" r="3.5" fill="#168dff"/>
+              <path d="M12 87H88" stroke="#168dff" strokeWidth="3" strokeLinecap="round"/>
+              <path d="M20 81V93M80 81V93" stroke="#55dcff" strokeWidth="5" strokeLinecap="round"/>
+            </svg>
+          </div>
+
+          <h1 style={{
+            fontSize: 'clamp(42px, 8vw, 68px)',
+            fontWeight: 900,
+            letterSpacing: -2,
+            margin: '12px 0 5px'
+          }}>
+            CALI <span style={{
+              background: 'linear-gradient(90deg,#47d9ff,#0878ff)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent'
+            }}>AI</span>
+          </h1>
+
+          <p style={{
+            color: '#8db6d8',
+            letterSpacing: 4,
+            fontSize: 11,
+            fontWeight: 800,
+            marginBottom: 30
+          }}>
+            CALISTHENICS · INTELLIGENCE · PERFORMANCE
+          </p>
+
+          <h2 style={{
+            fontSize: 'clamp(25px, 5vw, 38px)',
+            fontWeight: 900,
+            marginBottom: 10
+          }}>
+            Choose Your <span style={{ color: '#31baff' }}>Experience.</span>
+          </h2>
+
+          <p style={{
+            color: '#b0c3dc',
+            fontSize: 15,
+            lineHeight: 1.7,
+            margin: '0 auto 35px',
+            maxWidth: 500
+          }}>
+            Your journey to strength starts here.
+            Choose how you want to train today.
+          </p>
+
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
+            gap: 22,
+            maxWidth: 820,
+            margin: '0 auto'
+          }}>
+            <button
+              type="button"
+              onClick={() => setActivePage('ai')}
+              style={{
+                background: 'linear-gradient(150deg,#123d70,#071b36 65%,#061329)',
+                border: '1px solid #2cbaff88',
+                borderRadius: 24,
+                padding: '20px 20px 27px',
+                color: 'white',
+                cursor: 'pointer',
+                textAlign: 'left',
+                boxShadow: '0 15px 50px #0007, 0 0 30px #078dff22'
+              }}
+            >
+              <div style={{
+                height: 175,
+                borderRadius: 17,
+                display: 'grid',
+                placeItems: 'center',
+                background: 'radial-gradient(circle,#147edb77,#081b36 70%)',
+                border: '1px solid #267db855',
+                marginBottom: 23
+              }}>
+                <svg width="125" height="125" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+                  <circle cx="50" cy="50" r="41" stroke="#0b92ff" strokeWidth="1.5" strokeDasharray="4 6"/>
+                  <path d="M49 25C37 12 19 22 22 37C12 44 17 59 28 63C24 78 43 84 49 72V25Z" stroke="#64eaff" strokeWidth="3"/>
+                  <path d="M51 25C63 12 81 22 78 37C88 44 83 59 72 63C76 78 57 84 51 72V25Z" stroke="#2b96ff" strokeWidth="3"/>
+                  <path d="M49 29V71M27 40L39 47L49 40M73 40L61 47L51 40M28 60L39 56M72 60L61 56" stroke="#8beeff" strokeWidth="2"/>
+                  <circle cx="27" cy="40" r="3" fill="#8beeff"/>
+                  <circle cx="73" cy="40" r="3" fill="#278cff"/>
+                </svg>
+              </div>
+              <div style={{ color: '#49d7ff', fontSize: 11, fontWeight: 800, letterSpacing: 2, marginBottom: 10 }}>
+                SMART TRAINING
+              </div>
+              <div style={{ fontSize: 27, fontWeight: 900, marginBottom: 12 }}>AI Coach</div>
+              <div style={{ color: '#b6c9df', lineHeight: 1.6, fontSize: 14, minHeight: 68 }}>
+                Your personal AI-powered calisthenics coach. Ask questions, get guidance and build your strength.
+              </div>
+              <div style={{
+                marginTop: 18,
+                background: 'linear-gradient(90deg,#13b4fa,#0759ef)',
+                borderRadius: 12,
+                padding: '15px 12px',
+                textAlign: 'center',
+                fontWeight: 800
+              }}>
+                Start AI Coaching →
+              </div>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => setActivePage('library')}
+              style={{
+                background: 'linear-gradient(150deg,#11365e,#071b36 65%,#061329)',
+                border: '1px solid #2cbaff88',
+                borderRadius: 24,
+                padding: '20px 20px 27px',
+                color: 'white',
+                cursor: 'pointer',
+                textAlign: 'left',
+                boxShadow: '0 15px 50px #0007, 0 0 30px #078dff22'
+              }}
+            >
+              <div style={{
+                height: 175,
+                borderRadius: 17,
+                display: 'grid',
+                placeItems: 'center',
+                background: 'radial-gradient(circle,#0b71c477,#081b36 70%)',
+                border: '1px solid #267db855',
+                marginBottom: 23
+              }}>
+                <svg width="135" height="135" viewBox="0 0 120 120" fill="none" aria-hidden="true">
+                  <path d="M13 22H107" stroke="#4ad8ff" strokeWidth="6" strokeLinecap="round"/>
+                  <path d="M22 22V106M98 22V106" stroke="#2b82ce" strokeWidth="5" strokeLinecap="round"/>
+                  <circle cx="60" cy="39" r="10" fill="#69dfff"/>
+                  <path d="M60 51L60 78M60 56L35 42L28 25M60 56L85 42L92 25M60 77L44 99M60 77L76 99"
+                    stroke="#69dfff" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round"/>
+                  <circle cx="60" cy="67" r="45" stroke="#1679db" strokeWidth="1.5" strokeDasharray="4 6"/>
+                </svg>
+              </div>
+              <div style={{ color: '#49d7ff', fontSize: 11, fontWeight: 800, letterSpacing: 2, marginBottom: 10 }}>
+                EXERCISE GUIDES
+              </div>
+              <div style={{ fontSize: 27, fontWeight: 900, marginBottom: 12 }}>Exercise Library</div>
+              <div style={{ color: '#b6c9df', lineHeight: 1.6, fontSize: 14, minHeight: 68 }}>
+                Explore your exercise video library, learn proper technique and master every movement.
+              </div>
+              <div style={{
+                marginTop: 18,
+                background: 'linear-gradient(90deg,#0879cf,#0648b8)',
+                borderRadius: 12,
+                padding: '15px 12px',
+                textAlign: 'center',
+                fontWeight: 800
+              }}>
+                Explore Exercises →
+              </div>
+            </button>
+          </div>
+
+          <p style={{
+            marginTop: 40,
+            color: '#6d8cab',
+            fontSize: 11,
+            letterSpacing: 2
+          }}>
+            A PROJECT BY AHMAD KAWOUK · CALISTHENICS COACH
+          </p>
+        </div>
+      </main>
+    )
+  }
   // The authenticated Dify chat is deliberately the same working iframe.
 if (user && !recovering && activePage === 'ai') {
     return (
