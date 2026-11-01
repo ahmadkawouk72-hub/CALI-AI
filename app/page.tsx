@@ -135,32 +135,25 @@ export default function Home() {
             YOUR TRAINING HUB
           </div>
 
-          <div style={{
-            margin: '28px auto 15px',
-            width: 118,
-            height: 118,
-            borderRadius: 30,
-            display: 'grid',
-            placeItems: 'center',
-            background: 'linear-gradient(145deg,#163f76,#06152b)',
-            border: '1px solid #28bfff88',
-            boxShadow: '0 0 65px #009dff55, inset 0 0 35px #087be533'
-          }}>
-            <svg width="88" height="88" viewBox="0 0 100 100" fill="none" aria-label="AI sports brain">
-              <path d="M49 24C39 10 18 19 21 36C9 42 14 61 26 64C23 80 43 87 49 73V24Z"
-                stroke="#55dcff" strokeWidth="3.5" strokeLinejoin="round"/>
-              <path d="M51 24C61 10 82 19 79 36C91 42 86 61 74 64C77 80 57 87 51 73V24Z"
-                stroke="#238bff" strokeWidth="3.5" strokeLinejoin="round"/>
-              <path d="M49 24V74M29 38L39 45L49 39M23 57L36 55L42 65M71 38L61 45L51 39M77 57L64 55L58 65"
-                stroke="#72e8ff" strokeWidth="2.5" strokeLinecap="round"/>
-              <circle cx="29" cy="38" r="3.5" fill="#6aeaff"/>
-              <circle cx="23" cy="57" r="3.5" fill="#6aeaff"/>
-              <circle cx="71" cy="38" r="3.5" fill="#168dff"/>
-              <circle cx="77" cy="57" r="3.5" fill="#168dff"/>
-              <path d="M12 87H88" stroke="#168dff" strokeWidth="3" strokeLinecap="round"/>
-              <path d="M20 81V93M80 81V93" stroke="#55dcff" strokeWidth="5" strokeLinecap="round"/>
-            </svg>
-          </div>
+         <div style={{
+  width: '100%',
+  maxWidth: 820,
+  margin: '28px auto 24px',
+  borderRadius: 22,
+  overflow: 'hidden',
+  border: '1px solid #28bfff88',
+  boxShadow: '0 0 55px #009dff33'
+}}>
+  <img
+    src="/cali-ai-hero.png"
+    alt="CALI AI - Calisthenics powered by artificial intelligence"
+    style={{
+      display: 'block',
+      width: '100%',
+      height: 'auto'
+    }}
+  />
+</div>
 
           <h1 style={{
             fontSize: 'clamp(42px, 8vw, 68px)',
