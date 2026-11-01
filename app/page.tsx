@@ -48,17 +48,10 @@ export default function Home() {
         setPassword('')
         return
       }
-      if (signup) {
-        const { data, error } = await supabase.auth.signUp({ email, password })
+    
+        const { error } = await supabase.auth.signInWithPassword({ email: email.trim().toLowerCase() + '@caliai.example.com', password })
         if (error) throw error
-        setNoticeKind('success')
-        setMessage(data.session
-          ? 'Your account was created successfully.'
-          : 'Account created! Check your email to confirm it, then log in.')
-      } else {
-        const { error } = await supabase.auth.signInWithPassword({ email, password })
-        if (error) throw error
-      }
+    
     } catch (err) {
       setNoticeKind('error')
       setMessage(err instanceof Error ? err.message : 'Something went wrong. Please try again.')
@@ -391,26 +384,19 @@ if (user && !recovering && activePage === 'library') {
           <p className="cali-tagline">Your AI Calisthenics Coach.</p>
           <p className="cali-description">Get programs, guidance, and answers — anytime, anywhere.</p>
 
-          {!recovering && (
-            <div className="cali-tabs" role="group" aria-label="Account action">
-              <button type="button" className={!signup ? 'active' : ''} aria-pressed={!signup}
-                onClick={() => { setSignup(false); setMessage('') }}>Log In</button>
-              <button type="button" className={signup ? 'active' : ''} aria-pressed={signup}
-                onClick={() => { setSignup(true); setMessage('') }}>Sign Up</button>
-            </div>
-          )}
+           
 
           <form className="cali-form" onSubmit={handleSubmit}>
             {!recovering && (
               <div className="cali-field">
-                <label htmlFor="cali-email">Email address</label>
+                <label htmlFor="cali-email">Username</label>
                 <div className="cali-input-wrap">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
                     <rect x="3" y="5" width="18" height="14" rx="1.5" />
                     <path d="m3.5 6 8.5 7 8.5-7" />
                   </svg>
-                  <input id="cali-email" type="email" inputMode="email" autoComplete="email"
-                    placeholder="name@example.com" value={email} required
+                  <input id="cali-email" type="text" autoComplete="username"
+                    placeholder="Enter your username" value={email} required
                     onChange={e => setEmail(e.target.value)} />
                 </div>
               </div>
@@ -433,28 +419,15 @@ if (user && !recovering && activePage === 'library') {
               </div>
             </div>
 
-            {!signup && !recovering && (
-              <button className="cali-forgot" type="button" onClick={forgotPassword} disabled={busy}>
-                Forgot your password?
-              </button>
-            )}
             {message && (
               <div className={`cali-notice ${noticeKind}`} role="status">{message}</div>
             )}
             <button className="cali-submit" type="submit" disabled={busy}>
-              <span>{busy ? 'Please wait...' : recovering ? 'Update Password'
-                : signup ? 'Create My Account' : 'Log In & Start Training'}</span>
+              <span>{busy ? 'Please wait...' : 'Log In & Start Training'}</span>
               <span className="cali-arrow" aria-hidden="true">→</span>
             </button>
-          </form>
-          {!recovering && (
-            <p className="cali-switch">
-              {signup ? 'Already have an account?' : 'New here?'}{' '}
-              <button type="button" onClick={() => { setSignup(!signup); setMessage('') }}>
-                {signup ? 'Log in' : 'Create a free account'}
-              </button>
-            </p>
-          )}
+         
+      </form>
         </section>
       </div>
       <style jsx>{`
