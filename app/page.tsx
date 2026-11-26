@@ -139,7 +139,7 @@ export default function Home() {
 }}>
   <img
     src="/cali-ai-hero.png"
-    alt="CALI AI - Calisthenics powered by artificial intelligence"
+    alt="B52 Strength & Skills - Calisthenics powered by artificial intelligence"
     style={{
       display: 'block',
       width: '100%',
@@ -221,7 +221,7 @@ export default function Home() {
 }}>
   <img
     src="/ai-coach.png"
-    alt="CALI AI Coach"
+    alt="B52 Strength & Skills"
     style={{
       width: '100%',
       height: '100%',
@@ -274,7 +274,7 @@ export default function Home() {
 }}>
   <img
     src="/exercise-library.png"
-    alt="CALI AI Exercise Library"
+    alt="B52 Strength & Skills Exercise Library"
     style={{
       width: '100%',
       height: '100%',
@@ -321,7 +321,7 @@ if (user && !recovering && activePage === 'ai') {
     return (
       <main style={{ margin: 0, height: '100dvh' }}>
         <header style={{ padding: '9px 16px', background: '#080f1e', color: 'white', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12 }}>
-          <strong>CALI AI 💪</strong>
+          <strong>B52 Strength & Skills 💪</strong>
           <button
   onClick={() => setActivePage('home')}
   style={{ padding: '8px 14px', cursor: 'pointer' }}
@@ -332,7 +332,7 @@ if (user && !recovering && activePage === 'ai') {
         </header>
         <iframe
           src="https://udify.app/chatbot/KayzquSIOehV9P61"
-          title="CALI AI"
+          title="B52 Strength & Skills"
           style={{ display: 'block', width: '100%', height: 'calc(100dvh - 53px)', border: 0 }}
           allow="microphone"
         />
@@ -365,7 +365,7 @@ if (user && !recovering && activePage === 'library') {
       <div className="cali-login-card">
         <div className="cali-hero" role="img" aria-label="Calisthenics athlete performing a pull-up, seen from behind" />
 
-        <section className="cali-content" aria-label="CALI AI account access">
+        <section className="cali-content" aria-label="B52 Strength & Skills account access">
           <div className="cali-brand">
             <div className="cali-logo" aria-hidden="true">C</div>
             <div className="cali-brand-rule" />
