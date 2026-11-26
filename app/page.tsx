@@ -379,10 +379,10 @@ if (user && !recovering && activePage === 'library') {
           <h1>
             {recovering ? <>Set a New <em>Password.</em></> : signup
               ? <>Join the <em>Team.</em></>
-              : <>Welcome Back, <em>Athlete.</em></>}
+              : <>Welcome to, <em>B52 Strength & Skills.</em></>}
           </h1>
-          <p className="cali-tagline">Your AI Calisthenics Coach.</p>
-          <p className="cali-description">Get programs, guidance, and answers — anytime, anywhere.</p>
+          <p className="cali-tagline">Calisthenics Training Platform.</p>
+          <p className="cali-description">Ai coach, Exercise Library, Calisthenics.</p>
 
            
 
