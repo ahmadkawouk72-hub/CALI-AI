@@ -154,11 +154,7 @@ export default function Home() {
             letterSpacing: -2,
             margin: '12px 0 5px'
           }}>
-            CALI <span style={{
-              background: 'linear-gradient(90deg,#47d9ff,#0878ff)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent'
-            }}>AI</span>
+            B52
           </h1>
 
           <p style={{
