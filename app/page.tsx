@@ -366,14 +366,12 @@ if (user && !recovering && activePage === 'library') {
         <div className="cali-hero" role="img" aria-label="Calisthenics athlete performing a pull-up, seen from behind" />
 
         <section className="cali-content" aria-label="B52 Strength & Skills account access">
-          <div className="cali-brand">
-            <div className="cali-logo" aria-hidden="true">C</div>
-            <div className="cali-brand-rule" />
-            <div className="cali-wordmark">
-              <div>CALI <span>AI</span></div>
-              <small>CALISTHENICS COACH</small>
-            </div>
-          </div>
+         <div className="cali-brand">
+  <div className="cali-wordmark">
+    <div>B52</div>
+    <small>STRENGTH & SKILLS</small>
+  </div>
+</div>
 
           <div className="cali-accent" />
           <h1>
