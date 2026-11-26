@@ -128,3 +128,7 @@ a {
   background-clip: text;
   text-fill-color: transparent;
 }
+.cali-login-page .cali-login-card {
+  margin-left: auto;
+  margin-right: auto;
+}
